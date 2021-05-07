@@ -2,9 +2,9 @@
 
 	Theme Name: Hemingway
     Text Domain: hemingway
-	Version: 2.1.1
+	Version: 2.1.2
 	Description: Hemingway is a clean and beautiful two-column theme for bloggers. It features a responsive design, retina-ready assets, Block Editor support, full-width header image with parallax scrolling effect, custom accent color settings, custom logo upload, and editor styles. Demo: https://andersnoren.se/themes/hemingway/
-	Tags: blog, two-columns, right-sidebar, custom-colors, custom-header, custom-menu, editor-style, featured-images, footer-widgets, full-width-template, post-formats, sticky-post, theme-options, threaded-comments, translation-ready, block-styles
+	Tags: blog, two-columns, right-sidebar, custom-colors, custom-header, custom-menu, editor-style, featured-images, footer-widgets, full-width-template, post-formats, sticky-post, theme-options, threaded-comments, translation-ready, block-styles, wide-blocks
 	Author: Anders Norén
 	Author URI: https://andersnoren.se
 	Theme URI: https://andersnoren.se/teman/hemingway-wordpress-theme/
@@ -592,6 +592,7 @@ input[type="submit"]:hover {
 
 .header-inner {
 	position: relative;
+	text-align: left;
 	z-index: 2;
 }
 
@@ -614,11 +615,13 @@ input[type="submit"]:hover {
 }
 
 .blog-info {
+	background: transparent;
 	display: inline-block;
 	padding: 30px;
 }
 
 .blog-title {
+	text-align: left;
 	font-family: 'Raleway', sans-serif;
 	font-size: 2.5em;
 	line-height: 1;
@@ -644,8 +647,8 @@ input[type="submit"]:hover {
 	font-weight: 400;
 	line-height: 1.25;
 	margin: 0;
+	font-size: 1.5em;
 	text-align: left;
-    font-size: 1.5em;
 }
 
 .blog-description:before {
@@ -654,7 +657,7 @@ input[type="submit"]:hover {
 	width: 100px;
 	height: 2px;
 	background: rgba(255,255,255,0.1);
-	margin: 20px 0;
+	margin: 20px auto;
 }
 
 
@@ -1947,6 +1950,12 @@ p.form-allowed-tags {
 	padding-left: 12px;
 }
 
+/* Error 404 --------------------------------- */
+
+.error404 .post-content .search-form {
+	margin-top: 30px;
+}
+
 
 /* -------------------------------------------------------------------------------- */
 /*	13. Sidebar
@@ -2039,33 +2048,33 @@ p.form-allowed-tags {
 
 /* Widget: Search ---------------------------- */
 
-.searchform {
+.search-form {
 	background: transparent;
-	margin: 0;
-}
-
-.searchform > div {
 	display: flex;
+	margin: 0;
 	width: 100%;
 }
 
-.searchform input#s {
+.search-form label {
+	margin: 0;
+	width: 100%;
+}
+
+.search-form .search-field {
 	background-color: #fff;
 	border-radius: 3px 0 0 3px;
 	border-right-width: 0;
 	padding: 16px 18px;
-	min-width: 0;
 	width: 100%;
 }
 
-.searchform #searchsubmit {
+.search-form .search-submit {
 	background-color: #1abc9c;
 	border-radius: 0 3px 3px 0;
 	display: block;
-	flex: none;
+	flex-shrink: 0;
 	font-size: 13px;
 	letter-spacing: 1px;
-	min-width: 0;
 	text-transform: uppercase;
 }
 
@@ -2259,27 +2268,19 @@ p.form-allowed-tags {
 
 @media ( max-width: 1040px ) {
 
-    /* Blog Title --------------------------- */
+	.blog-title {
+		font-size: 2.5em;
+	}
 
-    .blog-title {
-        font-size: 2.5em;
-    }
+	.blog-description {
+		font-size: 1.5em;
+	}
 
-    /* Blog Description --------------------------- */
-
-    .blog-description {
-        font-size: 1.5em;
-    }
-
-    /* Header -------------------------------- */
-
-    .header {
+	.header {
 		background-position: left;
 	}
-    
-    /* Body ---------------------------------- */
 
-    body {
+	body {
 		font-size: 16px;
 	}
 
@@ -2299,21 +2300,15 @@ p.form-allowed-tags {
 
 @media ( max-width: 800px ) {
 
-    /* Blog Description --------------------------- */
+	.blog-description {
+		font-size: 1.5em;
+	}
 
-    .blog-description {
-        font-size: 1.5em;
-    }
-    
-    /* Header -------------------------------- */
-
-    .header {
+	.header {
 		background-position: left;
 	}
-    
-    /* Body ---------------------------------- */
-    
-    body {
+
+	body {
 		font-size: 18px;
 	}
 
@@ -2433,7 +2428,7 @@ p.form-allowed-tags {
 		background-color: #282828;
 	}
 
-	.blog-search .searchform input#s {
+	.blog-search .search-form .search-submit {
 		border: none;
 	}
 
@@ -2511,15 +2506,19 @@ p.form-allowed-tags {
 
 @media ( max-width: 700px ) {
 
-    /* Blog Title --------------------------- */
-
     .blog-title {
         font-size: 2.0em;
     }
 
-    /* Body ---------------------------------- */
+    .blog-description {
+        font-size: 1em;
+    }
 
-    body {
+    .header {
+		background-position: center;
+	}
+
+	body {
 		font-size: 16px;
 	}
 
@@ -2547,14 +2546,6 @@ p.form-allowed-tags {
 
 	.blog-description:before {
 		margin: 15px 0;
-	}
-
-    .blog-description {
-        font-size: 1em;
-    }
-
-    .header {
-		background-position: center;
 	}
 
 	/* Main Content -------------------------- */
@@ -2707,33 +2698,27 @@ p.form-allowed-tags {
 
 @media ( max-width: 500px ) {
 
-	/* Body ---------------------------------- */
+    .blog-title {
+        font-size: 2.0em;
+    }
 
-    body {
+    .blog-description {
+        font-size: 1em;
+    }
+
+	body {
 		font-size: 15px;
 	}
 
 	/* Header -------------------------------- */
 
-	.header.section {
-		padding: 30px 0;
-	}
-
-    .header {
+	.header {
 		background-position: left;
 	}
 
-    /* Blog Title --------------------------- */
-
-    .blog-title {
-        font-size: 2.0em;
-    }
-
-    /* Blog Description --------------------------- */
-
-    .blog-description {
-        font-size: 1em;
-    }
+	.header.section {
+		padding: 30px 0;
+	}
 
 	/* Post ---------------------------------- */
 
